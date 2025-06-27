@@ -1,5 +1,13 @@
 package com.hemebiotech.analytics;
 
+<<<<<<< HEAD:src/com/hemebiotech/analytics/WriteSymptomDataToFile.java
+=======
+import java.util.Map;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Map.Entry;
+
+>>>>>>> 4cd5190 (result.out generated):Project02Eclipse/src/com/hemebiotech/analytics/WriteSymptomDataToFile.java
 public class WriteSymptomDataToFile implements ISymptomWriter {
 	
 	private String outputFile;
