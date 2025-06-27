@@ -3,13 +3,12 @@ package com.hemebiotech.analytics;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.TreeMap;
 
 public class AnalyticsCounter {
 	
 	private ISymptomReader reader;
 	private ISymptomWriter writer;
-	import java.util.Map;
-	import java.util.HashMap;
 	
 	public AnalyticsCounter(ISymptomReader reader, ISymptomWriter writer) {
 		
@@ -28,22 +27,37 @@ public class AnalyticsCounter {
 		Map<String, Integer> symptomCounts = new HashMap<>();
 		for(String symptom : symptoms) {
 			
-			symptomCounts.put(symptom, symptomCounts.getOrDefault(symptom, 0) + 1);
+			String cleanSymptom = symptom.trim().toLowerCase();
+			symptomCounts.put(cleanSymptom, symptomCounts.getOrDefault(cleanSymptom, 0) + 1);
 			
 		}
 		
 		return symptomCounts;
 	}
 	
+	public Map<String, Integer> sortSymptoms(Map<String, Integer> symptoms) {
+		
+		return new TreeMap<>(symptoms);
+		
+	}
+	
 	public void analyzeSymptoms() {
 		
-		List<String> symptoms = getSymptoms();	
+		List<String> symptoms = getSymptoms();
+		 System.out.println(" Symptômes lus : " + symptoms);
+		 
 		Map<String, Integer> symptomCounts = countSymptoms(symptoms);
-		writer.writeSymptoms(symptomCounts);
+		 System.out.println(" Comptage : " + symptomCounts);
+		 
+		Map<String, Integer> sortedSymptoms = sortSymptoms(symptomCounts);
+		System.out.println("Trié : " + sortedSymptoms);
+		
+		writer.writeSymptoms(sortedSymptoms);
 
 	}
 	
 	public static void main(String[] args) {
+		System.out.println("=== DÉMARRAGE DU PROGRAMME ===");
 		
 		ISymptomReader reader = new ReadSymptomDataFromFile("symptoms.txt");
 		ISymptomWriter writer = new WriteSymptomDataToFile("result.out");
