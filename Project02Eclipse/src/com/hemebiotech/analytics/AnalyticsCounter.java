@@ -15,9 +15,15 @@ public class AnalyticsCounter {
 		this.writer = writer;
 	}
 	
+	public List<String> getSymptoms() {
+		
+		return reader.GetSymptoms();
+		
+	}
+	
 	public void analyzeSymptoms() {
 		
-		List<String> symptoms = reader.GetSymptoms();	
+		List<String> symptoms = getSymptoms();	
 		Map<String, Integer> symptomCounts = new HashMap<>();
 		
 		for(String symptom : symptoms) {
