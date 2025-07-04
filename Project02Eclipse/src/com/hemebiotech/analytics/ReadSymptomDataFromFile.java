@@ -29,7 +29,7 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 	 **/
 	
 	@Override
-	public List<String> GetSymptoms() {
+	public List<String> getSymptoms() {
 		
 		/**
 		 * Read the symptoms file and return the list of symptoms
@@ -39,7 +39,8 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 		 * @return a list of symptoms (strings), never null.
 		 **/
 		
-		ArrayList<String> result = new ArrayList<String>();
+		final ArrayList<String> result = new ArrayList<String>();
+		
 		
 		if (filepath != null) {
 			try {
