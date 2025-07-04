@@ -56,15 +56,4 @@ public class AnalyticsCounter {
 
 	}
 	
-	public static void main(String[] args) {
-		System.out.println("=== DÉMARRAGE DU PROGRAMME ===");
-		
-		ISymptomReader reader = new ReadSymptomDataFromFile("symptoms.txt");
-		ISymptomWriter writer = new WriteSymptomDataToFile("result.out");
-		
-		AnalyticsCounter counter = new AnalyticsCounter(reader, writer);
-		counter.analyzeSymptoms();
-		
-	}
-	
 }
