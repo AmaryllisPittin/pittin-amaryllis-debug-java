@@ -22,8 +22,23 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 		this.filepath = filepath;
 	}
 	
+	/**
+	 * Read the file located at the specified path and return the list of symptoms
+	 * 
+	 * Each line of the file is a distinct symptom
+	 **/
+	
 	@Override
 	public List<String> GetSymptoms() {
+		
+		/**
+		 * Read the symptoms file and return the list of symptoms
+		 * 
+		 * Handles cases where the file is missing or empty by returning an empty list
+		 * 
+		 * @return a list of symptoms (strings), never null.
+		 **/
+		
 		ArrayList<String> result = new ArrayList<String>();
 		
 		if (filepath != null) {
