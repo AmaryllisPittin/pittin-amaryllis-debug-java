@@ -39,12 +39,11 @@ public class ReadSymptomDataFromFile implements ISymptomReader {
 		 * @return a list of symptoms (strings), never null.
 		 **/
 		
-		final ArrayList<String> result = new ArrayList<String>();
+		final ArrayList<String> result = new ArrayList<>();
 		
 		
-		if (filepath != null) {
-			try {
-				BufferedReader reader = new BufferedReader (new FileReader(filepath));
+		if (filepath != null) {	
+			try (BufferedReader reader = new BufferedReader (new FileReader(filepath))) {
 				String line = reader.readLine();
 				
 				while (line != null) {
